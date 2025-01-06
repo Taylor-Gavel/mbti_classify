@@ -60,6 +60,11 @@ lr_model.fit(X_train_tfidf, y_train)
 y_pred_lr = lr_model.predict(X_test_tfidf)
 print(classification_report(y_test, y_pred_lr, target_names=label_encoder.classes_, zero_division=0))
 
+# 使用决策树算法进行分类
+dt_model = DecisionTreeClassifier(random_state=42)
+dt_model.fit(X_train_tfidf, y_train)
+y_pred = dt_model.predict(X_test_tfidf)
+print(classification_report(y_test, y_pred, target_names=label_encoder.classes_, zero_division=0))
 
 # 使用K近邻（KNN）进行分类
 knn_model = KNeighborsClassifier(n_neighbors=5)  # K近邻分类器，k=5
